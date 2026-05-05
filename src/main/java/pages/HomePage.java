@@ -16,14 +16,35 @@ public class HomePage {
     @FindBy(linkText = "Home")
     private WebElement homeButton;
 
+    @FindBy(linkText = "Products")
+    private WebElement productsButton;
+
+    @FindBy(linkText = "Cart")
+    private WebElement cartButton;
+
     @FindBy(linkText = "Signup / Login")
     private WebElement loginOrSignupButton;
+
+    @FindBy(linkText = "Contact us")
+    private WebElement contactUsButton;
 
     public void clickHomeButton() {
         homeButton.click();
     }
 
+    public void clickProductsButton() {
+        productsButton.click();
+    }
+
+    public void clickCartButton() {
+        cartButton.click();
+    }
+
     public void clickLoginOrSignupButton() {
         loginOrSignupButton.click();
+    }
+
+    public void clickContactUsButton() {
+        contactUsButton.click();
     }
 }
