@@ -39,7 +39,8 @@ public class BaseClass {
     }
 
     public WebDriver initializeBrowser(String browser){
-        WebDriverManager.chromedriver().setup();
+        //WebDriverManager.chromedriver().setup(); // Automatically manages the ChromeDriver version based on the installed Chrome browser
+        WebDriverManager.chromedriver().browserVersion("147").setup(); // Forcing a specific version of ChromeDriver
         WebDriverManager.firefoxdriver().setup();
 
         if(browser.equals("chrome")){
