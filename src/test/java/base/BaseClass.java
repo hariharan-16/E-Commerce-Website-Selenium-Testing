@@ -1,6 +1,9 @@
 package base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbookFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,15 +20,17 @@ import java.util.Properties;
 public class BaseClass {
     public WebDriver driver;
     public Properties prop;
-    FileInputStream file;
+
+    public FileInputStream propFile, excelFile;
+    public static XSSFWorkbook wb;
 
     public HomePage hp;
     public LoginOrSignUpPage sp;
 
     public BaseClass() throws IOException {
         prop = new Properties();
-        file = new FileInputStream("src/test/resources/testData.prop");
-        prop.load(file);
+        propFile = new FileInputStream("src/test/resources/testData.prop");
+        prop.load(propFile);
     }
 
     @BeforeMethod
@@ -34,8 +39,12 @@ public class BaseClass {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Utilities.IMPLICIT_WAIT));
         driver.get(prop.getProperty("url"));
+
         hp = new HomePage(driver);
         sp = new LoginOrSignUpPage(driver);
+
+        excelFile = new FileInputStream("src/test/resources/testData.xlsx");
+        wb = new XSSFWorkbook(excelFile);
     }
 
     @AfterMethod
@@ -47,12 +56,11 @@ public class BaseClass {
 
     public WebDriver initializeBrowser(String browser){
         //WebDriverManager.chromedriver().setup(); // Automatically manages the ChromeDriver version based on the installed Chrome browser
-        WebDriverManager.chromedriver().browserVersion("147").setup(); // Forcing a specific version of ChromeDriver
-        WebDriverManager.firefoxdriver().setup();
+        //WebDriverManager.chromedriver().browserVersion("148").setup(); // Forcing a specific version of ChromeDriver
 
-        if(browser.equals("chrome")){
-            driver = WebDriverManager.chromedriver().create();
-        } else if(browser.equals("firefox")){
+        if(browser.equalsIgnoreCase("chrome")){
+            driver = WebDriverManager.chromedriver().browserVersion("147").create();
+        } else if(browser.equalsIgnoreCase("firefox")){
             driver = WebDriverManager.firefoxdriver().create();
         }
 
