@@ -1,2 +1,4 @@
 url = https://automationexercise.com/
 browser = chrome
+validEmail = harioz1515@gmail.com
+validPassword = test
