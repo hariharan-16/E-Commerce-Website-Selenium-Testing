@@ -14,6 +14,8 @@ public class LoginOrSignUpPage {
         PageFactory.initElements(driver, this);
     }
 
+    // Signup field
+
     @FindBy(name = "name")
     private WebElement nameField;
 
@@ -35,6 +37,29 @@ public class LoginOrSignUpPage {
         signUpButton.click();
     }
 
+    // Login field
+
+    @FindBy(xpath = "//div[@class='login-form']//input[@type='email']")
+    private WebElement loginEmailField;
+
+    public void enterLoginEmail(String email){
+        loginEmailField.sendKeys(email);
+    }
+
+    @FindBy(xpath = "//div[@class='login-form']//input[@type='password']")
+    private WebElement loginPasswordField;
+
+    public void enterLoginPassword(String password){
+        loginPasswordField.sendKeys(password);
+    }
+
+    @FindBy(xpath = "//div[@class='login-form']//button[@type='submit']")
+    private WebElement loginButton;
+
+    public void clickLoginButton(){
+        loginButton.click();
+    }
+
     // Signup Form Page
 
     @FindBy(id = "id_gender1")
@@ -52,10 +77,10 @@ public class LoginOrSignUpPage {
     }
 
     @FindBy(id = "password")
-    private WebElement passwordField;
+    private WebElement signupPasswordField;
 
     public void enterPassword(String password){
-        passwordField.sendKeys(password);
+        signupPasswordField.sendKeys(password);
     }
 
     @FindBy(xpath = "//select[@name='days']")
@@ -149,13 +174,20 @@ public class LoginOrSignUpPage {
         continueButton.click();
     }
 
-    // After login or register Delete Account Button appears
+    // After login or register Delete Account & Logout Button appears
 
     @FindBy(linkText = "Delete Account")
     private WebElement deleteAccountButton;
 
     public void clickDeleteAccountButton(){
         deleteAccountButton.click();
+    }
+
+    @FindBy(xpath = "//a[text()=' Logout']")
+    private WebElement logoutButton;
+
+    public void clickLogoutButton(){
+        logoutButton.click();
     }
 
 }
