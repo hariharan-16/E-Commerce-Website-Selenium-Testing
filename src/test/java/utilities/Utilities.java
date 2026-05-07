@@ -47,6 +47,6 @@ public class Utilities extends BaseClass {
         File perm = new File("screenshots/"+name+"_"+System.currentTimeMillis()+".png");
         FileHandler.copy(temp, perm);
 
-        return "screenshots/"+name+".png";
+        return "screenshots/"+name+"_"+System.currentTimeMillis()+".png";
     }
 }
