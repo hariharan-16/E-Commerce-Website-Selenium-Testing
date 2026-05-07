@@ -5,6 +5,13 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.io.FileHandler;
+
+import java.io.File;
+import java.io.IOException;
 
 public class Utilities extends BaseClass {
 
@@ -32,5 +39,14 @@ public class Utilities extends BaseClass {
         }
 
         return data;
+    }
+
+    public static String getScreenshot(WebDriver driver, String name) throws IOException {
+        TakesScreenshot ss =  (TakesScreenshot)driver;
+        File temp = ss.getScreenshotAs(OutputType.FILE);
+        File perm = new File("screenshots/"+name+".png");
+        FileHandler.copy(temp, perm);
+
+        return "screenshots/"+name+".png";
     }
 }
