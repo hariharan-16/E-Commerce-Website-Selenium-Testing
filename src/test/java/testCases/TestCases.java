@@ -45,6 +45,7 @@ public class TestCases extends BaseClass {
 
         Thread.sleep(5000);
         sp.clickContinueButton();
+        Assert.assertTrue(driver.findElement(By.partialLinkText("Logged in as")).getText().contains(Utilities.getExcelData("Sheet1", 0, 0)), "Logged in as text does not contain the correct username");
 
         Thread.sleep(5000);
         sp.clickDeleteAccountButton();
