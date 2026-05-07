@@ -1,6 +1,7 @@
 package base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.Getter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbookFactory;
@@ -18,6 +19,7 @@ import java.time.Duration;
 import java.util.Properties;
 
 public class BaseClass {
+    @Getter
     public WebDriver driver;
     public Properties prop;
 
