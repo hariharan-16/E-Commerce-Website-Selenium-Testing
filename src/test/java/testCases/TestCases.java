@@ -47,13 +47,33 @@ public class TestCases extends BaseClass {
         sp.clickContinueButton();
         Assert.assertTrue(driver.findElement(By.partialLinkText("Logged in as")).getText().contains(Utilities.getExcelData("Sheet1", 0, 0)), "Logged in as text does not contain the correct username");
 
-        Thread.sleep(5000);
+//        Thread.sleep(5000);
+//        sp.clickDeleteAccountButton();
+//        WebElement accountDeletedText = driver.findElement(By.xpath("//b[text()='Account Deleted!']"));
+//        Assert.assertTrue(accountDeletedText.isDisplayed(), "Account Deleted text is not displayed");
+//
+//        Thread.sleep(5000);
+//        sp.clickContinueButton();
+    }
+
+    @Test
+    public void testCase2() throws InterruptedException {
+        // Login with valid email and password
+        hp.clickLoginOrSignupButton();
+        Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed(), "Login to your account text is not displayed");
+
+        sp.enterLoginEmail(prop.getProperty("validEmail"));
+        sp.enterLoginPassword(prop.getProperty("validPassword"));
+        sp.clickLoginButton();
+        Assert.assertTrue(driver.findElement(By.partialLinkText("Logged in as")).getText().contains(Utilities.getExcelData("Sheet1", 0, 0)), "Logged in as text does not contain the correct username");
+
         sp.clickDeleteAccountButton();
         WebElement accountDeletedText = driver.findElement(By.xpath("//b[text()='Account Deleted!']"));
         Assert.assertTrue(accountDeletedText.isDisplayed(), "Account Deleted text is not displayed");
 
         Thread.sleep(5000);
         sp.clickContinueButton();
+
     }
 
 }
