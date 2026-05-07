@@ -44,7 +44,7 @@ public class Utilities extends BaseClass {
     public static String getScreenshot(WebDriver driver, String name) throws IOException {
         TakesScreenshot ss =  (TakesScreenshot)driver;
         File temp = ss.getScreenshotAs(OutputType.FILE);
-        File perm = new File("screenshots/"+name+".png");
+        File perm = new File("screenshots/"+name+"_"+System.currentTimeMillis()+".png");
         FileHandler.copy(temp, perm);
 
         return "screenshots/"+name+".png";
