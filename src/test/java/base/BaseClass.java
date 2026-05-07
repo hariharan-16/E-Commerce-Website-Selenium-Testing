@@ -19,9 +19,12 @@ import java.time.Duration;
 import java.util.Properties;
 
 public class BaseClass {
-    @Getter
     public WebDriver driver;
     public Properties prop;
+
+    public WebDriver getDriver() {
+        return driver;
+    }
 
     public FileInputStream propFile, excelFile;
     public static XSSFWorkbook wb;
