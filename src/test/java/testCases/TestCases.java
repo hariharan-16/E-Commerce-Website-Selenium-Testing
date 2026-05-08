@@ -76,4 +76,21 @@ public class TestCases extends BaseClass {
 
     }
 
+    @Test
+    public void testCase3(){
+        // Login with invalid email and password
+        hp.clickLoginOrSignupButton();
+        Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed(), "Login to your account text is not displayed");
+
+        sp.enterLoginEmail(Utilities.invalidEmail());
+        sp.enterLoginPassword(Utilities.invalidPassword());
+        sp.clickLoginButton();
+
+        if(sp.invalidEmailOrPasswordTextIsDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("Invalid email or password text is not displayed");
+        }
+    }
+
 }
