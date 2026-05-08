@@ -199,4 +199,13 @@ public class LoginOrSignUpPage {
         return invalidEmailOrPasswordText.isDisplayed();
     }
 
+    // Signup Failure
+
+    @FindBy(xpath = "//p[text()='Email Address already exist!']")
+    private WebElement signupExistingEmailText;
+
+    public boolean signupExistingEmailTextIsDisplayed(){
+        return signupExistingEmailText.isDisplayed();
+    }
+
 }
