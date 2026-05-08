@@ -53,7 +53,7 @@ public class Utilities extends BaseClass {
 
     public static String invalidEmail(){
         Date date = new Date();
-        return "harioz1515"+date.toString().replace(" ", "_").replace(":", "_");
+        return "harioz1515@"+date.toString().replace(" ", "").replace(":", "");
     }
 
     public static String invalidPassword() {
