@@ -108,4 +108,21 @@ public class TestCases extends BaseClass {
         Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed(), "Not navigated to Login to your account page after logout");
     }
 
+    @Test
+    public void testCase5(){
+        // Register with existing email
+        hp.clickLoginOrSignupButton();
+        Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed(), "Login to your account text is not displayed");
+
+        sp.enterName(Utilities.getExcelData("Sheet1", 0, 0));
+        sp.enterSignupEmail(Utilities.getExcelData("Sheet1", 1, 0));
+        sp.clickSignUpButton();
+
+        if(sp.signupExistingEmailTextIsDisplayed()){
+            Assert.assertTrue(true);
+        }else {
+            Assert.fail("Email Address already exist text is not displayed");
+        }
+    }
+
 }
