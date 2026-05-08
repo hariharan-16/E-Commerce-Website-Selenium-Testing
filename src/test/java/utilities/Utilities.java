@@ -12,6 +12,7 @@ import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 public class Utilities extends BaseClass {
 
@@ -48,5 +49,15 @@ public class Utilities extends BaseClass {
         FileHandler.copy(temp, perm);
 
         return "screenshots/"+name+"_"+System.currentTimeMillis()+".png";
+    }
+
+    public static String invalidEmail(){
+        Date date = new Date();
+        return "harioz1515"+date.toString().replace(" ", "_").replace(":", "_");
+    }
+
+    public static String invalidPassword() {
+        Date date = new Date();
+        return date.toString().replace(" ", "_").replace(":", "_");
     }
 }
