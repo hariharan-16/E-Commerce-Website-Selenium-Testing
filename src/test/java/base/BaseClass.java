@@ -5,6 +5,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.ContactUsPage;
 import pages.HomePage;
 import pages.LoginOrSignUpPage;
 import utilities.Utilities;
@@ -27,6 +28,7 @@ public class BaseClass {
 
     public HomePage hp;
     public LoginOrSignUpPage sp;
+    public ContactUsPage cp;
 
     public BaseClass() throws IOException {
         prop = new Properties();
@@ -43,6 +45,7 @@ public class BaseClass {
 
         hp = new HomePage(driver);
         sp = new LoginOrSignUpPage(driver);
+        cp = new ContactUsPage(driver);
 
         excelFile = new FileInputStream("src/test/resources/testData.xlsx");
         wb = new XSSFWorkbook(excelFile);
