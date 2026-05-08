@@ -190,4 +190,13 @@ public class LoginOrSignUpPage {
         logoutButton.click();
     }
 
+    // Login Failure
+
+    @FindBy(xpath = "//p[text()='Your email or password is incorrect!']")
+    private WebElement invalidEmailOrPasswordText;
+
+    public boolean invalidEmailOrPasswordTextIsDisplayed(){
+        return invalidEmailOrPasswordText.isDisplayed();
+    }
+
 }
