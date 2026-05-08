@@ -1,11 +1,14 @@
 package testCases;
 
 import base.BaseClass;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.Utilities;
+
+import java.io.File;
 
 public class TestCases extends BaseClass {
 
@@ -123,6 +126,35 @@ public class TestCases extends BaseClass {
         }else {
             Assert.fail("Email Address already exist text is not displayed");
         }
+    }
+
+    @Test
+    public void testCase6(){
+        // Contact us form.
+        hp.clickContactUsButton();
+        if(cp.isGetInTouchHeadingDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("Get In Touch heading is not displayed. Not directed to contact us form");
+        }
+
+        cp.getNameField().sendKeys("test");
+        cp.getEmailField().sendKeys("test@mail.com");
+        cp.getSubjectField().sendKeys("test");
+        cp.getMessageField().sendKeys("test");
+        File file = new File("src/test/resources/dummyText.txt");
+        cp.getInputFileField().sendKeys(file.getAbsolutePath());
+        cp.getSubmitButton().click();
+
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+
+        if(cp.isSuccessMessageDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("Success message is not displayed after submitting contact us form");
+        }
+        cp.getHomeButton().click();
     }
 
 }
