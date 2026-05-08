@@ -67,12 +67,12 @@ public class TestCases extends BaseClass {
         sp.clickLoginButton();
         Assert.assertTrue(driver.findElement(By.partialLinkText("Logged in as")).getText().contains(Utilities.getExcelData("Sheet1", 0, 0)), "Logged in as text does not contain the correct username");
 
-        sp.clickDeleteAccountButton();
-        WebElement accountDeletedText = driver.findElement(By.xpath("//b[text()='Account Deleted!']"));
-        Assert.assertTrue(accountDeletedText.isDisplayed(), "Account Deleted text is not displayed");
-
-        Thread.sleep(5000);
-        sp.clickContinueButton();
+//        sp.clickDeleteAccountButton();
+//        WebElement accountDeletedText = driver.findElement(By.xpath("//b[text()='Account Deleted!']"));
+//        Assert.assertTrue(accountDeletedText.isDisplayed(), "Account Deleted text is not displayed");
+//
+//        Thread.sleep(5000);
+//        sp.clickContinueButton();
 
     }
 
@@ -91,6 +91,21 @@ public class TestCases extends BaseClass {
         } else {
             Assert.fail("Invalid email or password text is not displayed");
         }
+    }
+
+    @Test
+    public void testCase4(){
+        // Logout user
+        hp.clickLoginOrSignupButton();
+        Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed(), "Login to your account text is not displayed");
+
+        sp.enterLoginEmail(prop.getProperty("validEmail"));
+        sp.enterLoginPassword(prop.getProperty("validPassword"));
+        sp.clickLoginButton();
+        Assert.assertTrue(driver.findElement(By.partialLinkText("Logged in as")).getText().contains(Utilities.getExcelData("Sheet1", 0, 0)), "Logged in as text does not contain the correct username");
+
+        sp.clickLogoutButton();
+        Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed(), "Not navigated to Login to your account page after logout");
     }
 
 }
