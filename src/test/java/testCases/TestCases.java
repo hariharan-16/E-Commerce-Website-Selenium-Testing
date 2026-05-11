@@ -157,4 +157,15 @@ public class TestCases extends BaseClass {
         cp.getHomeButton().click();
     }
 
+    @Test
+    public void testCase7() {
+        // Verify test case page
+        hp.clickTestCaseButton();
+        if(tp.isTestCaseHeadingDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("Test Cases heading is not displayed. Not navigated to Test Cases page");
+        }
+    }
+
 }
