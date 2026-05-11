@@ -28,6 +28,9 @@ public class HomePage {
     @FindBy(linkText = "Contact us")
     private WebElement contactUsButton;
 
+    @FindBy(xpath = "//div[@class='item active']//button[text()='Test Cases']")
+    private WebElement testCaseButton;
+
     public void clickHomeButton() {
         homeButton.click();
     }
@@ -46,5 +49,9 @@ public class HomePage {
 
     public void clickContactUsButton() {
         contactUsButton.click();
+    }
+
+    public void clickTestCaseButton() {
+        testCaseButton.click();
     }
 }
