@@ -29,6 +29,7 @@ public class BaseClass {
     public ContactUsPage cp;
     public TestCasePage tp;
     public AllProductsPage app;
+    public ProductsDetailPage pdp;
 
     public BaseClass() throws IOException {
         prop = new Properties();
@@ -48,6 +49,7 @@ public class BaseClass {
         cp = new ContactUsPage(driver);
         tp = new TestCasePage(driver);
         app = new AllProductsPage(driver);
+        pdp = new ProductsDetailPage(driver);
 
         excelFile = new FileInputStream("src/test/resources/testData.xlsx");
         wb = new XSSFWorkbook(excelFile);
