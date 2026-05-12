@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import utilities.Utilities;
 
 import java.io.File;
+import java.io.IOException;
 
 public class TestCases extends BaseClass {
 
@@ -17,7 +18,7 @@ public class TestCases extends BaseClass {
     }
 
     @Test
-    public void testCase1() throws InterruptedException {
+    public void testCase1() throws InterruptedException, IOException {
         // Register User
         hp.clickLoginOrSignupButton();
         WebElement signUpText = driver.findElement(By.xpath("//h2[text()='New User Signup!']"));
@@ -60,7 +61,7 @@ public class TestCases extends BaseClass {
     }
 
     @Test
-    public void testCase2() throws InterruptedException {
+    public void testCase2() throws InterruptedException, IOException {
         // Login with valid email and password
         hp.clickLoginOrSignupButton();
         Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed(), "Login to your account text is not displayed");
@@ -97,7 +98,7 @@ public class TestCases extends BaseClass {
     }
 
     @Test
-    public void testCase4(){
+    public void testCase4() throws IOException {
         // Logout user
         hp.clickLoginOrSignupButton();
         Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed(), "Login to your account text is not displayed");
@@ -112,7 +113,7 @@ public class TestCases extends BaseClass {
     }
 
     @Test
-    public void testCase5(){
+    public void testCase5() throws IOException {
         // Register with existing email
         hp.clickLoginOrSignupButton();
         Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed(), "Login to your account text is not displayed");
@@ -166,6 +167,19 @@ public class TestCases extends BaseClass {
         } else {
             Assert.fail("Test Cases heading is not displayed. Not navigated to Test Cases page");
         }
+    }
+
+    @Test
+    public void testCase8(){
+        // Verify all products page and product detail page
+        hp.clickProductsButton();
+        if(app.isAllProductsHeadingDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("All Products heading is not displayed. Not navigated to All Products page");
+        }
+
+        app.clickViewProduct("Blue Top");
     }
 
 }
