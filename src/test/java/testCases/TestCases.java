@@ -187,4 +187,25 @@ public class TestCases extends BaseClass {
         }
     }
 
+    @Test
+    public void testCase9(){
+        // Search products
+        hp.clickProductsButton();
+
+        app.enterProductNameInSearchField("Men Tshirt");
+        app.clickSearchButton();
+
+        if(spp.isSearchedProductTextDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("Searched Products text is not displayed. Not navigated to searched products page");
+        }
+
+        if(spp.isSearchedProductNameDisplayed("Men Tshirt")){
+            Assert.assertTrue(true);
+        }else {
+            Assert.fail("Searched product name is not displayed in searched products page");
+        }
+    }
+
 }
