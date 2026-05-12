@@ -5,9 +5,7 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
@@ -59,5 +57,15 @@ public class Utilities extends BaseClass {
     public static String invalidPassword() {
         Date date = new Date();
         return date.toString().replace(" ", "_").replace(":", "_");
+    }
+
+    public static void scrollToElementAndClick(WebDriver driver, WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        // Scroll element to center
+        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+
+        // JS Click
+        js.executeScript("arguments[0].click();", element);
     }
 }

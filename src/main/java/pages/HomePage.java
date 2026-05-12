@@ -16,7 +16,7 @@ public class HomePage {
     @FindBy(linkText = "Home")
     private WebElement homeButton;
 
-    @FindBy(linkText = "Products")
+    @FindBy(xpath = "//a[text()=' Products']")
     private WebElement productsButton;
 
     @FindBy(linkText = "Cart")
