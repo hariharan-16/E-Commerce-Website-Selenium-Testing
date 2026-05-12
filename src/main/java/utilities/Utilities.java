@@ -1,26 +1,26 @@
 package utilities;
 
-import base.BaseClass;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
 
-public class Utilities extends BaseClass {
-
-    public Utilities() throws Exception {
-        super();
-    }
+public class Utilities{
 
     public static final int IMPLICIT_WAIT = 10;
 
-    public static String getExcelData(String sheetName, int rowNum, int cellNum) {
+    public static String getExcelData(String sheetName, int rowNum, int cellNum) throws IOException {
+
+        FileInputStream excelFile = new FileInputStream("src/test/resources/testData.xlsx");
+        XSSFWorkbook wb = new XSSFWorkbook(excelFile);
 
         XSSFSheet sheet = wb.getSheet(sheetName);
         XSSFRow row = sheet.getRow(rowNum);
