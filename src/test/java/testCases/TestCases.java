@@ -180,6 +180,11 @@ public class TestCases extends BaseClass {
         }
 
         app.clickViewProduct("Blue Top");
+        if (pdp.isProductInformationDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("Product Information is not displayed. Not navigated to product detail page");
+        }
     }
 
 }
