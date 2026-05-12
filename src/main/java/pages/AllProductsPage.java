@@ -38,4 +38,18 @@ public class AllProductsPage {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(viewProduct(productName)));
         Utilities.scrollToElementAndClick(driver, element);
     }
+
+    @FindBy(id = "search_product")
+    private WebElement searchTextField;
+
+    public void enterProductNameInSearchField(String productName){
+        searchTextField.sendKeys(productName);
+    }
+
+    @FindBy(id = "submit_search")
+    private WebElement searchButton;
+
+    public void clickSearchButton(){
+        searchButton.click();
+    }
 }
