@@ -208,4 +208,24 @@ public class TestCases extends BaseClass {
         }
     }
 
+    @Test
+    public void testCase10(){
+        // Verify subscription in home page
+        Utilities.scrollToElement(driver, hp.getSubscriptionText());
+        if (hp.getSubscriptionText().isDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("Subscription text is not displayed in home page");
+        }
+
+        hp.sendSubscriptionText("test@mail.com");
+        hp.clickSubscribeButton();
+
+        if(hp.isSubscriptionSuccessMessageDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("Subscription success message is not displayed after subscribing");
+        }
+    }
+
 }
