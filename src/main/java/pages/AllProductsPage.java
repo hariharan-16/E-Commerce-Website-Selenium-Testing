@@ -36,7 +36,8 @@ public class AllProductsPage {
 
     public void clickViewProduct(String productName){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(viewProduct(productName)));
-        Utilities.scrollToElementAndClick(driver, element);
+        Utilities.scrollToElement(driver, element);
+        Utilities.jsClick(driver, element);
     }
 
     @FindBy(id = "search_product")
