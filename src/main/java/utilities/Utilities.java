@@ -59,12 +59,14 @@ public class Utilities{
         return date.toString().replace(" ", "_").replace(":", "_");
     }
 
-    public static void scrollToElementAndClick(WebDriver driver, WebElement element){
+    public static void scrollToElement(WebDriver driver, WebElement element){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
         // Scroll element to center
         js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+    }
 
+    public static void jsClick(WebDriver driver, WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         // JS Click
         js.executeScript("arguments[0].click();", element);
     }
