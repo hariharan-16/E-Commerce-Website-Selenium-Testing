@@ -228,4 +228,24 @@ public class TestCases extends BaseClass {
         }
     }
 
+    @Test
+    public void testCase11(){
+        // Verify subscription in cart page
+        hp.clickCartButton();
+        if (cap.getSubscriptionText().isDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("Subscription text is not displayed in Cart page");
+        }
+
+        cap.sendSubscriptionText("test@mail.com");
+        cap.clickSubscribeButton();
+
+        if(cap.isSubscriptionSuccessMessageDisplayed()){
+            Assert.assertTrue(true);
+        } else {
+            Assert.fail("Subscription success message is not displayed after subscribing");
+        }
+    }
+
 }
